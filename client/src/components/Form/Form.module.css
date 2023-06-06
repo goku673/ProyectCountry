@@ -60,6 +60,11 @@
   .button:hover {
     background-color: #2d3748;
   }
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
   
   select {
     padding: 5px;

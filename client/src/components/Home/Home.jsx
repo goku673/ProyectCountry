@@ -82,6 +82,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.barraNav}>
+      
         <SerchBar />
         <select value={orderBy} onChange={handleOrderChange} className={styles.select}>
           <option value=''>Ordenar por...</option>

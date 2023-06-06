@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createActivity } from '../../redux/actions/acctions';
 import { useSelector } from 'react-redux';
 import styles from './Form.module.css';
+import Navigation from '../Navigation/Navigation';
 
 const FormActivity = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,11 @@ const FormActivity = () => {
 
   const handleSumit = (event) => {
     event.preventDefault();
-    dispatch(createActivity(formData));
+    if (formData.name === '') {
+      alert('name no puede estar vacio');
+    } else {
+      dispatch(createActivity(formData));
+    }
   };
 
   const handleChance = (event) => {
@@ -57,22 +62,24 @@ const FormActivity = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSumit}>
-      <h2 className={styles.title}>Create a new activity</h2>
-      <div className={styles.field}>
+      <Navigation />
+       <h2 className={styles.title}>Create a new activity</h2>
+        <div className={styles.field}>
         <label htmlFor='name'>Name:</label>
         <input type='text' name='name' value={formData.name} onChange={handleChance} placeholder='Enter name' />
-      </div>
-      <div className={styles.field}>
+          {formData.name === '' && <p className={styles.error}>este campo no puede estar vacio</p>}
+       </div>
+       <div className={styles.field}>
         <label htmlFor='difficult'>Difficulty:</label>
         <input type='range' name='difficulty' min='1' max='5' value={formData.difficulty} onChange={handleChance} />
-      </div>
-      <div className={styles.field}>
+        </div>
+        <div className={styles.field}>
         <label htmlFor='duration'>Duration:</label>
         <select name='duration' value={formData.duration} onChange={handleChance}>
           {getDurationOptions(1, 24)}
         </select>
-      </div>
-      <div className={styles.field}>
+       </div>
+       <div className={styles.field}>
         <p>Select a season:</p>
         <select name='season' value={formData.season} onChange={handleChance}>
           {seasons.map((s) => (
@@ -81,14 +88,14 @@ const FormActivity = () => {
             </option>
           ))}
         </select>
-      </div>
-      <div className={styles.field}>
+       </div>
+        <div className={styles.field}>
         <label htmlFor='pais'>Pais:</label>
-        <select name='pais' value={formData.pais} onChange={handleChance} multiple>
+         <select name='pais' value={formData.pais} onChange={handleChance} multiple>
           {getCountriesIdOptions()}
-        </select>
-      </div>
-      <div className={styles.selectedCountries}>
+          </select>
+        </div>
+       <div className={styles.selectedCountries}>
         {formData.pais.map((pais) => (
           <div key={pais} className={styles.selectedCountry}>
             {allCountries.find((c) => c.id === pais).name}

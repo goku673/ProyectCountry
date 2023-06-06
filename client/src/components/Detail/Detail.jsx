@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import {cardId} from '../../redux/actions/acctions'
 import styles from './Detail.module.css';
-
+import Navigation from '../Navigation/Navigation';
 const Detail = () => {
   const {id} = useParams();
   console.log(id)
@@ -19,6 +19,7 @@ const Detail = () => {
   console.log(country.activities)
   return (
     <div className={styles.detailContainer}>
+     <Navigation/>
       <div className={styles.card}>
         <h1>{country.name}</h1>
         <img src={country.imageFlag} alt={`${country.name} flag`} className={styles.flag} />
