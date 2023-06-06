@@ -1,0 +1,44 @@
+.detailContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0404046f; /* Reemplaza con el código de color de la bandera */
+    border: 4px solid rgb(47, 16, 97);  
+}
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    border:2px solid #0829ba;
+  }
+  
+  .flag {
+    width: 150px;
+    height: auto;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  
+  .info p {
+    margin: 5px 0;
+  }
+  
+  .info strong {
+    font-weight: bold;
+    margin-right: 5px;
+    color: #333333;
+  }
