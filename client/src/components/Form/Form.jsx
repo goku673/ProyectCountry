@@ -10,7 +10,7 @@ const FormActivity = () => {
   const allCountries = useSelector((state) => state.allCountries);
   const [formData, setFormData] = useState({
     name: '',
-    difficulty: '',
+    difficulty: "",
     duration: 0,
     season: '',
     pais: [],
@@ -38,7 +38,10 @@ const FormActivity = () => {
     event.preventDefault();
     if (formData.name === '') {
       alert('name no puede estar vacio');
+    }else if(formData.difficulty ===''){
+      alert('difficult no puede ser 0')
     } else {
+      console.log(formData)
       dispatch(createActivity(formData));
     }
   };
@@ -72,13 +75,15 @@ const FormActivity = () => {
        <div className={styles.field}>
         <label htmlFor='difficult'>Difficulty:</label>
         <input type='range' name='difficulty' min='1' max='5' value={formData.difficulty} onChange={handleChance} />
+          { formData.difficulty === ''  &&  <p className={styles.error}>deve seleccionar entre 1 y 5 </p>}
         </div>
         <div className={styles.field}>
         <label htmlFor='duration'>Duration:</label>
         <select name='duration' value={formData.duration} onChange={handleChance}>
-          {getDurationOptions(1, 24)}
+          {getDurationOptions(0, 24)}
         </select>
-       </div>
+        {formData.duration === 0 && <p className={styles.error}>no puede ser 0</p>}
+       </div>  
        <div className={styles.field}>
         <p>Select a season:</p>
         <select name='season' value={formData.season} onChange={handleChance}>

@@ -34,10 +34,10 @@ const Home = () => {
       
       : allCountries.slice(indexOffFirsCountry, indexOfLastCountry);
 
-    useEffect(()=>{
-     filterCountry();
-
-    },[orderBy,continent,nameActivity])
+      useEffect(()=>{
+        filterCountry();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [orderBy, continent, nameActivity, copyCountries]);
 
   const filterCountry = ()=>{
      let copyFilterCountries = [...copyCountries];
@@ -85,14 +85,14 @@ const Home = () => {
       
         <SerchBar />
         <select value={orderBy} onChange={handleOrderChange} className={styles.select}>
-          <option value=''>Ordenar por...</option>
+          <option value=''>sort by...</option>
           <option value='name-asc'>A-Z</option>
           <option value='name-des'>Z-A</option>
           <option value='population-asc'>Menor población</option>
           <option value='population-des'>Mayor población</option>
         </select>
         <select value={continent} onChange={handleContinentChange} className={styles.select}>
-          <option value=''>Filtrar por continente...</option>
+          <option value=''>Filter by continent...</option>
           <option value='Asia'>Asiáticos</option>
           <option value='Americas'>Americanos</option>
           <option value='Polar'>Polares</option>
@@ -101,11 +101,11 @@ const Home = () => {
           <option value='Africa'>Africanos</option>
         </select>
         <select value={nameActivity} onChange={(event)=> setNameActivity(event.target.value)}>
-          <option value=''>Filtrar por actividades</option>
+          <option value=''>Filter by activities</option>
           {
-            activities?.map((act)=>{
+            activities?.map((act,index)=>{
                return (
-                <option value={act.name}>
+                <option  key={index}value={act.name}>
                    {act.name}
                 </option>
 
@@ -114,19 +114,19 @@ const Home = () => {
           }   
         </select> 
         <Link to='/createActivity'>
-          <button className={styles.button}>Crear actividad</button>
+          <button className={styles.button}>Create Activity</button>
         </Link>
       </div>
       <Cards countries={countries} />
       <div className={styles.pagination}>
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
-          Anterior
+          back
         </button>
         <p className={styles.currentPage}>
           Página {currentPage} de {Math.ceil(allCountries.length / countriesPerPage)}
         </p>
         <button onClick={handleNextPage} disabled={indexOfLastCountry >= allCountries.length}>
-          Siguiente
+          next
         </button>
       </div>
     </div>

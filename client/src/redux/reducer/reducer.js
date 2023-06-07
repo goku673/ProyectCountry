@@ -57,6 +57,10 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         countryId: action.payload,
+        pagination: {
+          ...state.pagination,
+          currentPage: 1,
+        }
       }
     case FILTER_COUNTRY:
       return {

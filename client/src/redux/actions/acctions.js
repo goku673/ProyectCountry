@@ -5,7 +5,6 @@ import  {GET_COUNTRIES ,
          FILTER_COUNTRY_CONTINENT,
          GET_COUNTRIES_BY_ID,
          GET_ACTIVITYS,
-         COUNTRY_SELECT,
          FILTER_COUNTRY} from './acctions-types';
 import axios from 'axios';
 
@@ -22,7 +21,6 @@ export function  getCountries (){
                        })
 
                 } catch (error) {
-                     
                      console.log(error);
                 }
        }
@@ -30,16 +28,16 @@ export function  getCountries (){
 
 export function  createActivity (activity){
      return  async function async(dispatch){
-          try {  
-              const response = await axios.post('http://localhost:3001/activities',activity);  
-              return  dispatch({
-                       type: CREATE_ACTIVITY,
-                       payload:response,
-                    })
-          } catch (error) {
-              alert(error.message)
-          }
-
+           
+              const response = await axios.post('http://localhost:3001/activities',activity); 
+               if(!response.data.message){
+                   alert('creado con exito');
+                    return  dispatch({
+                         type: CREATE_ACTIVITY,
+                         payload:response,
+                      });
+               }
+               alert(response.data.message);
      }
 
 }
@@ -101,15 +99,7 @@ export  function cardId(id){
 
 }
 
-export function countrySelect(countries){
-       return async function async(dispatch){
-             dispatch({
-               type : COUNTRY_SELECT,
-               payload  :  countries,
-             }
-             )
-       }
-}
+
 
 export function filterCountries(countries){
       return async function (dispatch){

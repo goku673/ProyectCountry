@@ -1,44 +1,97 @@
 .detailContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #0404046f; /* Reemplaza con el código de color de la bandera */
-    border: 4px solid rgb(47, 16, 97);  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #0404046f;
+  border: 4px solid rgb(47, 16, 97);
 }
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+  border: 3px solid #0829ba;
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.flag {
+  width: 150px;
+  height: auto;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.info p {
+  margin: 5px 0;
+}
+
+.info strong {
+  font-weight: bold;
+  margin-right: 5px;
+  color: #333333;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background: #E8CBC0;  
+background: -webkit-linear-gradient(to right, #636FA4, #E8CBC0);  
+background: linear-gradient(to right, #636FA4, #E8CBC0); 
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;
+}
+
+.activities {
+  margin-top: 20px;
   
-  .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    padding: 20px;
-    border:2px solid #0829ba;
-  }
-  
-  .flag {
-    width: 150px;
-    height: auto;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 20px;
-  }
-  
-  .info p {
-    margin: 5px 0;
-  }
-  
-  .info strong {
-    font-weight: bold;
-    margin-right: 5px;
-    color: #333333;
-  }
+}
+
+.activityCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #0F2027;  
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.activityCard h3 {
+  margin: 0;
+}
+
+.activityCard p {
+  margin: 5px 0;
+}
+
+p {
+  margin: 0;
+}
+
+h2 {
+  margin-top: 0;
+}
